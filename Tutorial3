@@ -1,0 +1,92 @@
+package courses;
+import java.util.Scanner;
+/**
+ *
+ * @author 932254331
+ */
+public class SavingsAccount {
+    
+    private static double balance;
+    private static double TotalDeposit=0;
+    private static double TotalWithdraw=0;
+    private static double AnnualInterest;
+    private static double InterestEarned=0;
+    
+    public SavingsAccount(double StartingBalance){
+        balance=StartingBalance;
+    }
+    
+    public  double AddMoney(){
+        String choice;
+        System.out.println("Any deposit ? (write y for yes or n for no)");
+        Scanner input=new Scanner(System.in);
+        choice=input.next();
+        if(choice=="y"){
+           System.out.println("What amount ?");
+           double add;
+           add=input.nextDouble();
+           balance+=add;
+           TotalDeposit+=add;
+           return balance;
+        }
+        else{
+            return balance;
+        }
+
+    }
+    
+    public  double WithdrawMoney(){
+        String choice;
+        System.out.println("Any withdraw ? (write y for yes or n for no)");
+        Scanner input=new Scanner(System.in);
+        choice=input.next();
+        if(choice=="y"){
+           System.out.println("What amount ?");
+           double less;
+           less=input.nextDouble();
+           balance-=less;
+           TotalWithdraw+=less;
+           return balance;
+        }
+        else{
+        return balance;
+        }
+
+        
+    }
+    
+    public static double Interest(){
+        double MonthlyInterest=AnnualInterest/12;
+        InterestEarned=balance*MonthlyInterest;
+        balance+= balance*MonthlyInterest;
+        return balance;
+    }
+    
+     public static void main(String[] args) {
+         int month;
+         double FinalBalance=0;
+         System.out.println("what is the annual interest ?");
+         Scanner keyboard=new Scanner(System.in);
+         AnnualInterest=keyboard.nextDouble();
+         
+         System.out.println("Enter the starting balance");
+         double StartBalance;
+         StartBalance=keyboard.nextDouble();
+         SavingsAccount nouv= new SavingsAccount(StartBalance);
+         
+         System.out.println("how many month ?");
+         month=keyboard.nextInt();
+         
+         for(int i=0;i<month;i++){
+             FinalBalance=nouv.AddMoney();
+             FinalBalance=nouv.WithdrawMoney();
+             FinalBalance=nouv.Interest();
+             
+         }
+         System.out.println("Final Balance: "+ FinalBalance);
+         System.out.println("Total Deposit : "+ TotalDeposit);
+         System.out.println("Total Withdraw : "+ TotalWithdraw);
+         System.out.println("Interest Earned: "+ InterestEarned);
+         
+     }
+}
