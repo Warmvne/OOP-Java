@@ -21,7 +21,7 @@ public class SavingsAccount {
         System.out.println("Any deposit ? (write y for yes or n for no)");
         Scanner input=new Scanner(System.in);
         choice=input.next();
-        if(choice=="y"){
+        if(choice.equals("y")){
            System.out.println("What amount ?");
            double add;
            add=input.nextDouble();
@@ -40,7 +40,7 @@ public class SavingsAccount {
         System.out.println("Any withdraw ? (write y for yes or n for no)");
         Scanner input=new Scanner(System.in);
         choice=input.next();
-        if(choice=="y"){
+        if(choice.equals("y")){
            System.out.println("What amount ?");
            double less;
            less=input.nextDouble();
