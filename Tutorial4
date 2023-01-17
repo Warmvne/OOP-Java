@@ -1,0 +1,74 @@
+/////////////////////////////////////// Question 1 //////////////////////////////////////////////////////////////
+
+ */
+package lecture4;
+import java.util.Scanner;
+/**
+ *
+ * @author 932254331
+ */
+public class LandTract {
+
+    /**
+     * @param args the command line arguments
+     */
+    private double length_tract;
+    private double width_tract;
+    
+    public LandTract(double l,double w){
+        length_tract=l;
+        width_tract=w;
+    }
+    
+    public double getArea(double l, double w){
+        return l*w;
+    }
+    
+    public boolean TractCompareArea(LandTract zone2){
+        if(length_tract==zone2.length_tract && width_tract== zone2.width_tract){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner input = new Scanner(System.in);
+        double length,width;
+        double area1,area2;
+        
+        // First Land
+        System.out.println("Enter the length and the width of the first land");
+        System.out.print("Length: ");
+        length=input.nextDouble();
+        System.out.print("\nWidth: ");
+        width=input.nextDouble();
+        LandTract zone1= new LandTract(length,width);
+        area1=zone1.getArea(length, width);
+        
+        // Second Land
+        System.out.println("\n\nEnter the length and the width of the second land");
+        System.out.print("Length: ");
+        length=input.nextDouble();
+        System.out.print("\nWidth: ");
+        width=input.nextDouble();
+        LandTract zone2= new LandTract(length,width);
+        area2=zone2.getArea(length, width);
+        System.out.print("\n\n");
+        //Comparaison
+        if(zone1.TractCompareArea(zone2)){
+            System.out.println("Both lands have the same area which is "+ area1);
+        }
+        else{
+            System.out.println("The areas are not equals");
+            System.out.println("The first land's area is "+ area1);
+            System.out.println("The second land's area is "+ area2);
+        }
+        
+        
+        
+      }
+    
+}
