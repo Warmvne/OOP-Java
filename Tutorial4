@@ -72,3 +72,82 @@ public class LandTract {
       }
     
 }
+
+
+
+/////////////////////////////////////// Question 2 //////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    long id;
+	    long tickets;
+	    Scanner keyboard=new Scanner(System.in);
+		System.out.println("Welcome, enter you id: ");
+		id=keyboard.nextLong();
+		System.out.println("\n How many tickets have you got this last 3 years ?");
+		tickets=keyboard.nextLong();
+		
+		PolicyPremiums customer = new PolicyPremiums(id,0,0,tickets);
+		customer.Auto();
+		customer.IsSmoker();
+		
+		System.out.println("Hello, "+id);
+		System.out.println("Health Insurance: "+customer.getHealth());
+		System.out.println("Auto Insurance: "+ customer.getAuto());
+		
+		
+	}
+}
+
+class PolicyPremiums{
+    private long id_customer;
+    private long healthInsurance;
+    private long autoInsurance;
+    private long traffic_tickets_3years;
+    
+    public PolicyPremiums(long id, long health, long auto, long tickets){
+        id_customer=id;
+        healthInsurance=health;
+        autoInsurance=auto;
+        traffic_tickets_3years=tickets;
+    }
+    
+    public void IsSmoker(){
+        String answer;
+        Scanner input=new Scanner(System.in);
+        System.out.println("do you smoke ?(answer yes or no)");
+        answer=input.nextLine();
+        if(answer.equals("yes")){
+            healthInsurance=250;
+        }
+        else{
+            healthInsurance=190;
+        }
+    }
+    
+    public void Auto(){
+        if(traffic_tickets_3years>=3){
+            autoInsurance=175;
+        }
+        else if(traffic_tickets_3years==1 || traffic_tickets_3years==2){
+            autoInsurance=140;
+        }
+        else{
+            autoInsurance=90;
+        }
+        
+    }
+    
+    public long getHealth(){
+        return healthInsurance;
+    }
+    
+    public long getAuto(){
+        return autoInsurance;
+    }
+    
+}
