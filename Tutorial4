@@ -151,3 +151,61 @@ class PolicyPremiums{
     }
     
 }
+
+
+/////////////////////////////////////// Question 3 //////////////////////////////////////////////////////////////
+
+public class Q3 {
+    
+    public static void main(String[] args) {
+        long width,length;
+        long area;
+        long cost_square;
+        long TotalPrice;
+        Scanner keyboard= new Scanner(System.in);
+        
+        
+        System.out.println("Enter the width of the room: ");
+        width=keyboard.nextLong();
+        System.out.println("\nEnter the length of the room: ");
+        length=keyboard.nextLong();
+        System.out.println("\nEnter the price per square foot: ");
+        cost_square=keyboard.nextLong();
+        
+        RoomDimension Bedroom=new RoomDimension(length,width);
+        area= Bedroom.getAreaRoom();
+        RoomCarpet Bed =new RoomCarpet(Bedroom,cost_square);
+        TotalPrice= Bed.TotalCost();
+        
+        System.out.println("The area is "+ area);
+        System.out.println("The total is "+ TotalPrice);
+    }
+}
+
+ class RoomDimension{
+        private long lengthRoom;
+        private long widthRoom;
+        
+        public RoomDimension(long l,long w){
+            lengthRoom=l;
+            widthRoom=w;
+        }
+        public long getAreaRoom(){
+            return lengthRoom*widthRoom;
+        }
+}
+
+class RoomCarpet{
+    RoomDimension livingRoom;
+    private long cost_per_square;
+    
+    public RoomCarpet(RoomDimension room,long cost){
+        livingRoom=room;
+        cost_per_square=cost;
+    }
+    
+    public long TotalCost(){
+        return livingRoom.getAreaRoom()*cost_per_square;
+    }
+    
+}
