@@ -209,3 +209,100 @@ class RoomCarpet{
     }
     
 }
+
+
+/////////////////////////////////////// Question 4 //////////////////////////////////////////////////////////////
+
+package lecture4;
+import java.util.Scanner;
+/**
+ *
+ * @author 932254331
+ */
+public class Q4 {
+    public static void main(String[] args) {
+        RetailItem item1=new RetailItem("Jacket",12,59.95);
+        RetailItem item2=new RetailItem("Designer Jeans",40,34.95);
+        RetailItem item3=new RetailItem("Shirt",20,24.95);
+        cashRegister CashRegister;
+        System.out.println("Welcome to our store !");
+        System.out.println("\nHere our items available:\n");
+        
+        Scanner input = new Scanner(System.in);
+        int choice, quantity;
+        do
+        {
+            System.out.println("\t Description\tUnits on hand\tPrice");
+            System.out.println("Item#1:\t"+item1.getDescription()+"\t\t"+item1.getUnits()+"\t\t"+item1.getPrice());
+            System.out.println("Item#2:\t"+item2.getDescription()+"\t"+item2.getUnits()+"\t\t"+item2.getPrice());
+            System.out.println("Item#3:\t"+item3.getDescription()+"\t\t"+item3.getUnits()+"\t\t"+item3.getPrice());
+            System.out.println("\nEnter the number corresponding to your choice\n");
+            choice = input.nextInt();
+        }while(choice < 1 || choice > 3);
+        System.out.println("Enter the quantity you want:");
+        quantity = input.nextInt();
+        switch(choice)
+        {
+            case 1:
+                CashRegister = new cashRegister(item1, quantity);
+                break;
+            case 2:
+                CashRegister = new cashRegister(item2, quantity);
+                break;
+            case 3:
+                CashRegister = new cashRegister(item3, quantity);
+                break;
+            default:
+                System.out.println("Error: Unknown item");
+                CashRegister = new cashRegister(item3, quantity);
+                System.exit(1);
+        }
+        System.out.println("The total price is $" + CashRegister.getTotal() + " including $" + CashRegister.getTax() + " in tax");
+        System.exit(0);
+        
+    }
+}
+
+class RetailItem{
+    private String description;
+    private int unitsOnHand;
+    private double price;
+    
+    public RetailItem(String descrip,int units,double cost){
+        description=descrip;
+        unitsOnHand=units;
+        price=cost;
+    }
+    
+    public double getPrice(){
+        return price;
+    }
+    public String getDescription(){
+        return description;
+    }
+    public int getUnits(){
+        return unitsOnHand;
+    }
+    
+}
+
+class cashRegister{
+    RetailItem obj;
+    private int quantityItem;
+    
+    public cashRegister(RetailItem item,int quantity){
+        obj=item;
+        quantityItem=quantity;    
+    }
+    
+    public double getSubTotal(){
+        return obj.getPrice()*quantityItem;
+    }
+    public double getTax(){
+        return getSubTotal()*0.06;
+    }
+    public double getTotal(){
+        return getTax()+ getSubTotal();
+    }
+}
+
