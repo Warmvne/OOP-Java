@@ -1,0 +1,145 @@
+------------ Question 1 ------------------
+
+
+import java.util.Scanner
+
+public class question1{
+	public static void main (String[] args){
+		double a;
+		double b;
+		double c;
+		double sum;
+		double avg;
+
+		System.out.println("Input 3 numbers");
+		Scanner input=new Scanner (System.in);
+
+		a=input.nextDouble();
+		b=input.nextDouble();
+		c=input.nextDouble();
+
+		sum=a+b+c;
+		avg= sum/3;
+		System.out.println("sum: "+sum);
+		System.out.println("avg: "+avg);
+	}
+}
+
+
+------------ Question 2 ------------------
+
+
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class question2{
+	public static void main (String[] args){
+		String str;
+		double charge;
+
+		str=JOptionPane.showInputDialog(" what is the charge ?");
+		charge=Double.parseDouble(str);
+		double tax=0.0675*charge;
+		double tip=0.2*(tax+charge);
+		double totalBill= charge + tax + tip;
+
+		System.out.println("Charge: "+ charge);
+		System.out.println("Tax: "+ tax);
+		System.out.println("Tip: "+ tip);
+		System.out.println("Total bill: "+ totalBill);
+
+		System.exit(0);
+	}
+}
+
+
+------------ Question 3 ------------------
+
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class question3{
+	public static void main (String[] args){
+		int money;
+		int twenty;
+		int ten;
+		int five;
+		int one;
+
+		System.out.println("Input an amount");
+		Scanner input=new Scanner(System.in);
+
+		money=input.nextInt();
+		twenty=money/20;
+		ten=(money%20)/10;
+		five=((money%20)%10)/5;
+		one=(((money%20)%10)%5)/1;
+
+		System.out.println("Currency denomination of "+ money );
+		System.out.println("20s: "+ twenty);
+		System.out.println("10s: "+ ten);
+		System.out.println("5s: "+ five);
+		System.out.println("1s: "+ one);
+	}
+}
+
+
+------------ Question 4 ------------------
+
+
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class question4{
+	public static void main (String[] args){
+		Scanner scan = new Scanner(System.in);
+
+      	System.out.println("How many eggs?");
+
+      	int eggs = scan.nextInt();
+
+      	int dozens = eggs / 12;
+      	int one = eggs%12;
+
+		System.out.println("You ordered "+ eggs +" eggs.");
+		System.out.println(" That's "+ dozens +" at $3.25 per dozen");
+		System.out.println("and "+ one +" loose eggs at 45 cents each.")
+		System.out.println("For a total of $"+((dozens*3.25)+(ind*0.45))+".");
+	}
+}
+
+
+------------ Question 5 ------------------
+
+
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class question5{
+	public static void main (String[] args){
+
+        String ticketString = JOptionPane.showInputDialog(null, "Enter your six digit ticket number: ");
+
+        
+        int ticketNum = Integer.parseInt(ticketString);
+
+        
+        int removeDigit = ticketNum/10;
+
+        
+        int lostDigit = ticketNum%10;
+
+        
+        int remainderTicket = removeDigit%7;
+
+
+        if(lostDigit == remainderTicket){
+            JOptionPane.showMessageDialog(null, "This is a valid number.");
+        }
+ 		else{
+     		JOptionPane.showMessageDialog(null, "Ticket is invalid");
+ 		}
+
+ 		System.exit(0);
+	}
+}
