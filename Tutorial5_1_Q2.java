@@ -91,25 +91,55 @@ import java.util.Scanner;
  *
  * @author 932254331
  */
-public class CreateLoans extends Loan{
-    final int length_array =5;
-    ArrayList<Loan> NewLoans= new ArrayList<>();
-    Scanner input = new Scanner(System.in);
-    int LoanNumber;
-    String nameCustomer;
-    double AmountLoan;
-    double interest_rate;
-    double termLoan;
-    String type;
-    System.out.println("Enter the current prime interest rate (in %) :");
-    interest_rate = input.nextDouble() / 100;
-    
+public class CreateLoans extends Loan{ // bug ici jsp pq 
+    public static void main(String[] args)
+    {
+        final int length_array =5;
+        ArrayList<Loan> array = new ArrayList<>();
+        Scanner input = new Scanner(System.in);
+        int LoanNumber;
+        String nameCustomer;
+        double AmountLoan;
+        double interest_rate;
+        double termLoan;
+        String type;
+        System.out.println("Enter the current prime interest rate (in %) :");
+        interest_rate = input.nextDouble() / 100;
+        for(int i=0;i<length_array;i++){
+            System.out.println("Enter customer's last name:");
+            nameCustomer=input.next();
+            System.out.println("Enter loan number:");
+            LoanNumber=input.nextInt();
+            System.out.println("Enter the amount of the loan:");
+            AmountLoan=input.nextDouble();
+            System.out.println("Enter loan's term (in years):");
+            termLoan=input.nextDouble();
+            do
+            {
+                System.out.println("Enter loan's type:");
+                type = input.next();
+                if(type.equals("done")) type = "";
+                else if(type.equalsIgnoreCase("Business") || type.equalsIgnoreCase("BusinessLoan"))
+                {
+                    BusinessLoan Client =new BusinessLoan(LoanNumber, nameCustomer, AmountLoan, termLoan);
+                    array.add(Client);
+                    type = "done";
+                }
+                else if(type.equalsIgnoreCase("Personal") || type.equalsIgnoreCase("PersonalLoan"))
+                {
+                    PersonalLoan Perso = new PersonalLoan(LoanNumber, nameCustomer, AmountLoan, termLoan);
+                    array.add(Perso);
+                    type = "done";
+                }
+            }while(!(type.equals("done")));
+            
+            
+        }
+        for(int i = 0; i < array.size(); i++)
+            {
+                System.out.println(array.get(i));
+            }
+    }
     
     
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                        //
-//                      A FINIR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!          //
-//                                                                                        //
-////////////////////////////////////////////////////////////////////////////////////////////
