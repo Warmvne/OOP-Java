@@ -153,6 +153,109 @@ class Rental {
 
 ////////////////////////// QUESTION 3 ////////////////////////////////////////////////////
 
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main
+{
+	public static void main(String[] args) {
+		ArrayList<Employee> emp = new ArrayList<>();
+		Scanner input = new Scanner(System.in);
+		String choice;
+		String name;
+		int id;
+		String dept;
+		String pos;
+		
+		for(int i=0;i<5;i++){
+		    System.out.println("Do you know the department and the position of the employee ? (Y=Yes N=No)");
+		    choice=input.next();
+		    if(choice.equalsIgnoreCase("Y")){
+		        System.out.println("Name ?: ");
+		        name=input.next();
+		        System.out.println("ID ?: ");
+		        id=input.nextInt();
+		        System.out.println("Department ?: ");
+		        dept=input.next();
+		        System.out.println("Position ?: ");
+		        pos=input.next();
+		        Employee emp1 = new Employee (name,id,dept,pos);
+		        emp.add(emp1);
+		    }
+		    else{
+		        System.out.println("Name ?: ");
+		        name=input.next();
+		        System.out.println("ID ?: ");
+		        id=input.nextInt();
+		        Employee emp2 = new Employee (name,id);
+		        emp.add(emp2);
+		    }
+		}
+		
+		for(int i=0;i<5;i++){
+		    emp.get(i).Display();
+		    System.out.println("\n");
+		}
+	}
+}
+
+class Employee{
+    private String emp_name;
+    private int emp_id;
+    private String department;
+    private String position;
+    
+    public Employee(String name,int id,String dept, String pos){
+        emp_name=name;
+        emp_id=id;
+        department=dept;
+        position=pos;
+    }
+    
+    public Employee(String name,int id){
+        emp_name=name;
+        emp_id=id;
+        department="";
+        position="";
+    }
+    
+    public void setName(String name){
+        emp_name=name;
+    }
+    public String getName(){
+        return emp_name;
+    }
+    
+    public void setID(int id){
+        emp_id=id;
+    }
+    public int getID(){
+        return emp_id;
+    }
+    
+    public void setDept(String dept){
+        department=dept;
+    }
+    public String getDept(){
+        return department;
+    }
+    
+    public void setPosition(String pos){
+        position=pos;
+    }
+    public String getPosition(){
+        return position;
+    }
+    
+    
+    public void Display(){
+        System.out.println("Employee's name: "+ emp_name);
+        System.out.println("Employee's ID: "+ emp_id);
+        System.out.println("Department: "+ department);
+        System.out.println("Position: "+ position);
+    }
+}
+
 
 ////////////////////////// QUESTION 4 ////////////////////////////////////////////////////
 
