@@ -144,37 +144,3 @@ public class CreateLoans extends Loan{ // bug ici jsp pq
     
 }
 
-////////////////////////////////// FICHIER BOOK ARRAY ///////////////////////////////////////////////
-
-package tuto5_1_q1;
-
-import java.util.Scanner;
-import java.util.ArrayList;
-/**
- *
- * @author 932254331
- */
-public class BookArray {
-    public static void main(String[] args) {
-        String choice;
-        Scanner input= new Scanner (System.in);
-        ArrayList<Book> livre =new ArrayList<>();
-        for(int i=0;i<10;i++){
-            System.out.println("Do you want a Fiction book or a Non-Fiction ? (type N or NF)");
-            choice=input.next();
-            if(choice.equalsIgnoreCase("N")){
-                Book book1 = new Fiction("Harry Potter i",0);
-                livre.add(book1);
-            }
-            else{
-                Book book2 = new NonFiction("Steve Jobs Biography",0);
-                livre.add(book2);
-            }
-        }
-        
-        for (int i=0;i<10;i++){
-            livre.get(i).Display();
-        }
-        
-    }
-}
