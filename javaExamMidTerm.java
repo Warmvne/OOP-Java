@@ -179,3 +179,124 @@ class BasePlus_Commission_Employee extends Commission_Employee{
 
 ////////////////////////////////////////// QUESTION 2 //////////////////////////////////////////
 
+package examjava;
+import static examjava.GFG.overlappingArea;
+import java.lang.Math.*;
+ /*
+ * @author 932254331
+ */
+public class ExamJava {
+
+    /**
+     * @param args the command line arguments
+     */
+    //public static void main(String[] args) {
+        // TODO code application logic here
+    //}
+    public static void main(String[] args)
+	{
+		GFG.Point l1 = new GFG.Point(2, 2), r1 = new GFG.Point(5, 7);
+		GFG.Point l2 = new GFG.Point(3, 4), r2 = new GFG.Point(6, 9);
+
+		// Function Call
+		System.out.println(overlappingArea(l1, r1, l2, r2));
+	}
+}
+// Java program to find total area of two
+// overlapping Rectangles
+class GFG {
+
+	static class Point {
+		int x, y;
+
+		public Point(int x, int y)
+		{
+			this.x = x;
+			this.y = y;
+		}
+	};
+
+	// Returns Total Area of two overlap
+	// rectangles
+	static int overlappingArea(Point l1, Point r1,Point l2, Point r2)
+	{
+		// Area of 1st Rectangle
+		int area1
+			= Math.abs(l1.x - r1.x)
+			* Math.abs(l1.y - r1.y);
+
+		// Area of 2nd Rectangle
+		int area2
+			= Math.abs(l2.x - r2.x)
+			* Math.abs(l2.y - r2.y);
+
+		// Length of intersecting part i.e
+		// start from max(l1.x, l2.x) of
+		// x-coordinate and end at min(r1.x,
+		// r2.x) x-coordinate by subtracting
+		// start from end we get required
+		// lengths
+
+		int x_dist = (Math.min(r1.x, r2.x))- (Math.max(l1.x, l2.x));
+		int y_dist = (Math.min(r1.y, r2.y))- Math.max(l1.y, l2.y);
+		int areaI = 0;
+		if( x_dist > 0 && y_dist > 0 )
+		{
+			areaI = x_dist * y_dist;
+		}
+
+		return (area1 + area2 - areaI);
+	}
+
+	// Driver Code
+	
+}
+
+// This code is contributed by PrinciRaj1992
+
+/*class MyRectangle{
+    private int x_bottom_left;
+    private int y_bottom_left;
+    private int x_upper_right;
+    private int y_upper_right;
+    
+    public MyRectangle(int x_bottom_left,int y_bottom_left,int x_upper_right,int y_upper_right){
+        this.x_bottom_left=x_bottom_left;
+        this.y_bottom_left=y_bottom_left;
+        this.x_upper_right=x_upper_right;
+        this.y_upper_right=y_upper_right;
+    }
+    
+    public int getArea(){
+        return (y_bottom_left-x_bottom_left)*(y_upper_right-x_upper_right);
+    }
+    
+    public int getXBL(){
+        return x_bottom_left;
+    }
+    public int getYBL(){
+        return y_bottom_left;
+    }
+    public int getXUR(){
+        return x_upper_right;
+    }
+    public int getYUR(){
+        return y_upper_right;
+    }
+    
+    public MyRectangle overlap (MyRectangle rect){
+        if(this.getYUR()<rect.getXBL() || this.getYBL()>rect.getXUR()){
+            MyRectangle R3 = new MyRectangle(0,0,0,0);
+            return R3;
+        }
+        if(this.getXUR()<rect.getXBL() || this.getXBL()>rect.getXUR()){
+            MyRectangle R3 = new MyRectangle(0,0,0,0);
+            return R3;
+        }
+        else{
+            MyRectangle R3 = new MyRectangle();
+            return R3;
+            
+        }
+    }
+}*/
